@@ -6,23 +6,23 @@ import { IMailService } from './mail.interface';
 
 @Injectable()
 export class MailService extends IMailService {
-	constructor(
-		@Inject()
-		private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>
-	) {
-		super();
-	}
+  constructor(
+    @Inject()
+    private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>,
+  ) {
+    super();
+  }
 
-	private async sendMail(payload: SendMailPayload) {
-		return this.transporter.sendMail(payload);
-	}
+  private async sendMail(payload: SendMailPayload) {
+    return this.transporter.sendMail(payload);
+  }
 
-	async sendOTP(payload: SendOTPPayload) {
-		const template = getOtpTemplate(payload);
-		return this.sendMail({
-			...payload,
-			subject: 'Forgot password',
-			html: template
-		});
-	}
+  async sendOTP(payload: SendOTPPayload) {
+    const template = getOtpTemplate(payload);
+    return this.sendMail({
+      ...payload,
+      subject: 'Forgot password',
+      html: template,
+    });
+  }
 }

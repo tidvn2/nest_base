@@ -7,22 +7,22 @@ import { AppController } from './app.controller';
 import { ConfigModule } from './module/configs';
 
 @Module({
-	imports: [
-		ConfigModule,
-		// CronModule,
-		// DatabaseModule,
-		// JwtModule,
-		EventEmitterModule.forRoot({
-			maxListeners: 20
-		}),
-		CqrsModule.forRoot(),
-		ApiModule
-	],
-	controllers: [AppController],
-	// providers
+  imports: [
+    ConfigModule,
+    // CronModule,
+    // DatabaseModule,
+    // JwtModule,
+    EventEmitterModule.forRoot({
+      maxListeners: 20,
+    }),
+    CqrsModule.forRoot(),
+    ApiModule,
+  ],
+  controllers: [AppController],
+  // providers
 })
 export class AppModule implements NestModule {
-	configure(consumer: MiddlewareConsumer) {
-		consumer.apply(LoggerMiddleware).forRoutes('*');
-	}
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
 }

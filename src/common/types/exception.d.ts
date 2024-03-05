@@ -1,9 +1,9 @@
 declare global {
-	interface HttpExceptionResponse {
-		statusCode: number;
-		error: string;
-		message: any;
-	}
+  interface HttpExceptionResponse {
+    statusCode: number;
+    error: string;
+    message: any;
+  }
 }
 
 export {};

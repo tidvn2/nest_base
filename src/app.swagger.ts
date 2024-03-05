@@ -15,7 +15,7 @@ export function useSwagger(app: INestApplication) {
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-	extraModels: [paginationHelper]
+    extraModels: [paginationHelper],
   });
   SwaggerModule.setup(path, app, document, {
     swaggerOptions: {
